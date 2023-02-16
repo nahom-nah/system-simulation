@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+       
+        <button>clickme</button>
+    </div>
+<script type="text/javascript">
+$(document).ready(function () {
+	$("button").click(function () {
+	 
+	 
+		var postdata = {
+  "sampleid": "S04280922001",
+  "tests": [
+    {
+      "testid": "469400f2-279b-4439-afec-f5018f6b43ed",
+      "code": "RBC",
+      "panel": "yes"
+    },
+    {
+      "testid": "5da69542-8141-4532-baf0-46a5b259dde2",
+      "code": "PLT",
+      "panel": "yes"
+    },
+    {
+      "testid": "f5a939a4-ff40-460e-98d0-950832e7b24b",
+      "code": "WBC",
+      "panel": "yes"
+    }
+  ]
+};
+		 
+
+		var url = "http://localhost:8000/CreateNewOrder";
+		$.ajax({
+			type: "POST",
+			url: url,
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(postdata),
+			dataType: "json",
+			success: function(data) {console.log(data);},
+			error: function(a,b,c) {console.log(a);}
+		  });
+	  });
+  });
+</script>
+</body>
+</html>
